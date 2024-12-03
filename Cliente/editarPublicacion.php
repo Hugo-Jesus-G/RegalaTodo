@@ -38,7 +38,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active fw-bold text-primary" href="../Cliente/publicar.php">Publicar</a>
+                        <a class="nav-link active " href="../Cliente/publicar.php">Publicar</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="../Cliente/solicitudes.php">Solicitudes</a>
@@ -74,28 +74,47 @@
 
                     <div class="col-md-8">
                         <h1 class="mx-5"> !Publica lo que ya no Necesitas¡</h1>
-                        <?php require_once '../controllers/controladorPublicacion.php'   ?>
+                        <?php include '../controllers/obtenerInfoEditar.php'   ?>
 
-                        <form method="POST" enctype="multipart/form-data">
+                        <form action="../controllers/actualizar.php?id=<?php echo $idArticulo; ?>" method="POST" enctype="multipart/form-data">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre del Producto</label>
-                                <input type="text" class="form-control border border-primary" id="nombre" name="nombre" required>
+                                <input type="text" class="form-control border border-primary" id="nombre" name="nombre" value=<?php echo $nombre ?>>
                             </div>
                             <div class="mb-3">
                                 <label for="localidad" class="form-label">Localidad</label>
-                                <input type="text" class="form-control border border-primary" id="localidad" name="localidad" required>
+                                <input type="text" class="form-control border border-primary" id="localidad" name="localidad" value=<?php echo $localidad ?>>
                             </div>
                             <div class="mb-3">
                                 <label for="descripcion" class="form-label">Descripción</label>
-                                <textarea class="form-control border border-primary" id="descripcion" name="descripcion" rows="2" required></textarea>
+                                <textarea class="form-control border border-primary" id="descripcion" name="descripcion" rows="2"><?php echo $descripcion ?></textarea>
                             </div>
-                            <!-- Campo para seleccionar imágenes -->
+                            <!-- Lista de imágenes existentes -->
                             <div class="mb-3">
-                                <label for="imagenes" class="form-label">Imágenes del Producto</label>
-                                <input type="file" class="form-control border border-primary" id="imagenes" name="imagenes[]" multiple required>
+                                <label class="form-label">Imágenes Actuales</label>
+                                <div>
+                                    <?php
+                                 
+                                 foreach ($imagenes as $imagen) {
+                                     echo '
+                                     <div class="d-flex align-items-center mb-2">
+                                         <img src="' . htmlspecialchars($imagen['ruta']) . '" alt="Imagen" width="100" class="me-3">
+                                         <input type="checkbox" name="eliminar_imagenes[]" value="' . intval($imagen['idImagenesArticulo']) . '"> Eliminar
+                                     </div>';
+                                 }
+                                 ?>
+                                 
+                                    
+                                </div>
+                            </div>
+
+                            <!-- Campo para subir nuevas imágenes -->
+                            <div class="mb-3">
+                                <label for="imagenes" class="form-label">Agregar Nuevas Imágenes</label>
+                                <input type="file" class="form-control border border-primary" id="imagenes" name="imagenes[]" multiple>
                                 <small class="form-text text-muted">Puedes seleccionar varias imágenes.</small>
                             </div>
-                            <button type="submit" class="btn btn-primary">Registrar Producto</button>
+                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                         </form>
 
                     </div>

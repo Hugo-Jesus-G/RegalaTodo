@@ -34,7 +34,7 @@ if (!isset($_SESSION['username'])) {
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active fw-bold text-primary" href="../Cliente/indexCliente.php">Productos</a>
+            <a class="nav-link active " href="../Cliente/indexCliente.php">Productos</a>
           </li>
 
           <li class="nav-item">
@@ -44,7 +44,7 @@ if (!isset($_SESSION['username'])) {
             <a class="nav-link active" href="../Cliente/solicitudes.php">Solicitudes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="../Cliente/misPublicaciones.php">Mis Publicaciones</a>
+            <a class="nav-link active fw-bold text-primary" href="../Cliente/misPublicaciones.php">Mis Publicaciones</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="../controllers/cerrarsesion.php">Cerrar Sesión</a>
@@ -72,7 +72,7 @@ if (!isset($_SESSION['username'])) {
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <?php
-                    require_once '../Consultas/obtenerPublicaciones.php';
+                    require_once '../Consultas/getMisPublicaciones.php';
                     ?>
                 </div>
             </div>

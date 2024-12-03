@@ -71,9 +71,9 @@ if (!isset($_SESSION['username'])) {
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <?php
-                    require_once '../Consultas/obtenerPublicaciones.php';
-                    ?>
+                  <h3>Detalles</h3>
+<?php include '../Consultas/detalles.php' ?>
+
                 </div>
             </div>
         </div>

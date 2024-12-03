@@ -1,6 +1,7 @@
 <?php
-$query = "SELECT * FROM Articulo";
 $conexion=mysqli_connect("localhost","root","","regalatodo");
+$idCliente = $_SESSION['id_cliente'];
+$query = "SELECT * FROM Articulo WHERE id_Cliente = " . $idCliente;
 
 $result = mysqli_query($conexion, $query);
 
@@ -39,16 +40,15 @@ if ($result) {
               </button>
             </div>';  // Fin del carrusel
 
-            //botones
         echo '<div class="px-3 py-3">
                 <h5 class="mb-3">' . $row['nombre'] . '</h5>
                 <p class="mb-3">' . $row['descripcion'] . '</p>
                 <p><strong>Publicación:</strong> ' . $row['publicacion'] . '</p>
                 <p><strong>Localidad:</strong> ' . $row['localidad'] . '</p>
+                <a href="../controllers/eliminar.php?id='. $row['idArticulo'] . '" class="btn btn-danger">Eliminar</a>
+                 <a href="../Cliente/editarPublicacion.php?id='. $row['idArticulo'] . '" class="btn btn-success">Editar</a>
 
-
-                <a href="../Cliente/verDetalles.php?id=' . $row['idArticulo'] . '" class="btn btn-primary">ver mas</a>
-              </div>';
+                </div>';
 
         // Cerramos el div del artículo
         echo '</div>';

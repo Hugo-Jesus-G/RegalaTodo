@@ -1,13 +1,16 @@
 <?php
-$query = "SELECT * FROM Articulo";
+
+
+$idArticulo = $_GET['id'];
 $conexion=mysqli_connect("localhost","root","","regalatodo");
+
+$query = "SELECT * FROM Articulo WHERE idArticulo = " .$idArticulo;
 
 $result = mysqli_query($conexion, $query);
 
 if ($result) {
     while ($row = mysqli_fetch_array($result)) {
 
-        $idArticulo = $row['idArticulo'];
         $queryImagenes = "SELECT * FROM ImagenesArticulo WHERE id_Articulo = $idArticulo";
         $resultImagenes = mysqli_query($conexion, $queryImagenes);
 
@@ -38,17 +41,15 @@ if ($result) {
                 <span class="visually-hidden">Next</span>
               </button>
             </div>';  // Fin del carrusel
-
-            //botones
+//BOTONES
         echo '<div class="px-3 py-3">
                 <h5 class="mb-3">' . $row['nombre'] . '</h5>
                 <p class="mb-3">' . $row['descripcion'] . '</p>
                 <p><strong>Publicación:</strong> ' . $row['publicacion'] . '</p>
                 <p><strong>Localidad:</strong> ' . $row['localidad'] . '</p>
+                <a href="detalles.php?id=' . $row['idArticulo'] . '" class="btn btn-primary">solicitar</a>
 
-
-                <a href="../Cliente/verDetalles.php?id=' . $row['idArticulo'] . '" class="btn btn-primary">ver mas</a>
-              </div>';
+                </div>';
 
         // Cerramos el div del artículo
         echo '</div>';
