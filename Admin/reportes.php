@@ -34,11 +34,11 @@ if (!isset($_SESSION['username'])) {
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active fw-bold text-primary" href="../Admin/indexAdmin.php">Productos</a>
+            <a class="nav-link active " href="../Admin/indexAdmin.php">Productos</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link active" href="../Admin/reportes.php">Reportes</a>
+            <a class="nav-link active fw-bold text-primary" href="../Admin/reportes.php">Reportes</a>
           </li>
           
          
@@ -68,7 +68,7 @@ if (!isset($_SESSION['username'])) {
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <?php
-                    require_once '../Consultas/getAdminProductos.php';
+                    require_once '../Consultas/listaReportes.php';
                     ?>
                 </div>
             </div>

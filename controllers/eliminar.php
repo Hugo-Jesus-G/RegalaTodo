@@ -4,6 +4,7 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 }
 
 $idArticulo = intval($_GET['id']);
+$tipo = $_GET['tipo'];
 $conexion = mysqli_connect("localhost", "root", "", "regalatodo");
 
 if (!$conexion) {
@@ -13,9 +14,20 @@ if (!$conexion) {
 $query = "DELETE FROM Articulo WHERE idArticulo = {$idArticulo}";
 $result = mysqli_query($conexion, $query);
 
+
+
 if ($result) {
-    echo "Artículo eliminado correctamente";
-    header('Location: ../Cliente/misPublicaciones.php');
+    if ($tipo=="admin"){
+
+
+        header('Location: ../Admin/indexAdmin.php');
+    }else{
+
+
+        header('Location: ../Cliente/misPublicaciones.php');
+    }
+
+
     exit();
 } else {
     echo "Error al eliminar el artículo: " . mysqli_error($conexion);
