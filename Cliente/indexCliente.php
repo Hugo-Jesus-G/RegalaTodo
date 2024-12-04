@@ -10,73 +10,71 @@
 </head>
 
 <body>
-<?php
+  <?php
 
 
-session_start();
+  session_start();
 
-if (!isset($_SESSION['username'])) {
+  if (!isset($_SESSION['username']) or $_SESSION['tipo'] != 0) {
     header('Location: ../index.php');
     exit();
-}
+  }
 
-?>
-
-  <nav class="navbar navbar-expand-lg sticky-top border border-danger rounded-pill shadow-sm" style="background-color: #ffffff;">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="../Cliente/indexCliente.php">
-        <img src="../img/LogoRegalaTodo.png" alt="Logo" width="65" height="65" class="d-inline-block align-text-center">
-        Regala Todo
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active fw-bold text-primary" href="../Cliente/indexCliente.php">Productos</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link active" href="../Cliente/publicar.php">Publicar</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="../Cliente/solicitudes.php">Solicitudes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="../Cliente/misPublicaciones.php">Mis Publicaciones</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="../controllers/cerrarsesion.php">Cerrar Sesión</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active">
-              <?php 
-              if (isset($_SESSION["username"]) && !empty($_SESSION["username"])) {
-                  echo $_SESSION["username"];
-              } else {
-                  echo "Usuario no registrado";
-              }
-              ?>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
+  ?>
   <!-- contenido -->
-  <main class="container mt-5">
+  <main class="container">
     <div class="principal">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <?php
-                    require_once '../Consultas/obtenerPublicaciones.php';
-                    ?>
-                </div>
-            </div>
+      <nav class="navbar navbar-expand-lg sticky-top border border-danger rounded-pill shadow-sm" style="background-color: #ffffff;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="../Cliente/indexCliente.php">
+            <img src="../img/LogoRegalaTodo.png" alt="Logo" width="65" height="65" class="d-inline-block align-text-center">
+            Regala Todo
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active fw-bold text-danger" href="../Cliente/indexCliente.php">Productos</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link active" href="../Cliente/publicar.php">Publicar</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="../Cliente/solicitudes.php">Solicitudes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="../Cliente/misPublicaciones.php">Mis Publicaciones</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="../controllers/cerrarsesion.php">Cerrar Sesión</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active">
+                  <?php
+                  if (isset($_SESSION["username"]) && !empty($_SESSION["username"])) {
+                    echo $_SESSION["username"];
+                  } else {
+                    echo "Usuario no registrado";
+                  }
+                  ?>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
+      </nav>
+      <div class="container mt-5">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <?php
+            require_once '../Consultas/obtenerPublicaciones.php';
+            ?>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
 
