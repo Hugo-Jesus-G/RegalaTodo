@@ -6,7 +6,7 @@ $nombre = $_REQUEST['nombre'];
 
 $conexion=mysqli_connect("localhost","root","","regalatodo");
 
-$query = "INSERT INTO Cliente (nombre, username, password,tipo) VALUES ('$nombre', '$user', '$pass', 0)";
+$query = "INSERT INTO cliente (nombre, username, password,tipo) VALUES ('$nombre', '$user', '$pass', 0)";
 
 $result = mysqli_query($conexion, $query);
 

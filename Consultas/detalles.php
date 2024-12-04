@@ -2,12 +2,12 @@
 
 $idArticulo = $_GET['id'];
 $conexion = mysqli_connect("localhost", "root", "", "regalatodo");
-$query = "SELECT * FROM Articulo WHERE idArticulo = " . $idArticulo;
+$query = "SELECT * FROM articulo WHERE idArticulo = " . $idArticulo;
 $result = mysqli_query($conexion, $query);
 
 if ($result) {
   while ($row = mysqli_fetch_array($result)) {
-    $queryImagenes = "SELECT * FROM ImagenesArticulo WHERE id_Articulo = $idArticulo";
+    $queryImagenes = "SELECT * FROM imagenesarticulo WHERE id_Articulo = $idArticulo";
     $resultImagenes = mysqli_query($conexion, $queryImagenes);
     echo '<div class="mb-4 w-100">';
     echo '<div id="carouselArticulo' . $row['idArticulo'] . '" class="carousel slide" data-bs-ride="carousel">

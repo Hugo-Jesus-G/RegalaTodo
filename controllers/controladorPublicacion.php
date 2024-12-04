@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $todocorrecto = true;
     $conexion=mysqli_connect("localhost","root","","regalatodo");
 
-    $query = "INSERT INTO Articulo (idArticulo, nombre, descripcion, localidad, publicacion, id_cliente) 
+    $query = "INSERT INTO articulo (idArticulo, nombre, descripcion, localidad, publicacion, id_cliente) 
               VALUES (NULL, '$nombre', '$descripcion', '$localidad', NOW(), '$idCliente')";
 
     if (mysqli_query($conexion, $query)) {
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $image_path = $destino . $nombre_imagen; 
 
             if (copy($tmp_nombre, $image_path)) {
-                $queryimagen = "INSERT INTO ImagenesArticulo (id_Articulo, ruta) VALUES ('$producto_id', '$image_path')";
+                $queryimagen = "INSERT INTO imagenesarticulo (id_Articulo, ruta) VALUES ('$producto_id', '$image_path')";
                 if (!mysqli_query($conexion, $queryimagen)) {
                     echo "<div class='alert alert-danger' role='alert'>Error al registrar la imagen.</div>";
                 }

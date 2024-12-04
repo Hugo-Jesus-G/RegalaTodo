@@ -1,7 +1,7 @@
 <?php
 $conexion = mysqli_connect("localhost", "root", "", "regalatodo");
 
-$query = "SELECT * FROM Reporte ";
+$query = "SELECT * FROM reporte ";
 
 $result = mysqli_query($conexion, $query);
 

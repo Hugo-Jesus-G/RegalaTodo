@@ -21,6 +21,10 @@ SET time_zone = "+00:00";
 -- Base de datos: `regalatodo`
 --
 
+DROP DATABASE IF EXISTS regalatodo;
+CREATE DATABASE regalatodo;
+USE regalatodo;
+
 DELIMITER $$
 --
 -- Procedimientos

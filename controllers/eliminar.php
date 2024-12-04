@@ -23,7 +23,7 @@ while ($res = mysqli_fetch_array($r)) {
   }
 }
 
-$query = "DELETE FROM Articulo WHERE idArticulo = {$idArticulo}";
+$query = "DELETE FROM articulo WHERE idArticulo = {$idArticulo}";
 $result = mysqli_query($conexion, $query);
 mysqli_close($conexion);
 

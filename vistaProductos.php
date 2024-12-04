@@ -1,5 +1,5 @@
 <?php
-$query = "SELECT * FROM Articulo WHERE disponibilidad != 1";
+$query = "SELECT * FROM articulo WHERE disponibilidad != 1";
 $conexion = mysqli_connect("localhost", "root", "", "regalatodo");
 
 $result = mysqli_query($conexion, $query);
@@ -8,7 +8,7 @@ if (mysqli_num_rows($result) > 0) {
   while ($row = mysqli_fetch_array($result)) {
 
     $idArticulo = $row['idArticulo'];
-    $queryImagenes = "SELECT * FROM ImagenesArticulo WHERE id_Articulo = $idArticulo";
+    $queryImagenes = "SELECT * FROM imagenesarticulo WHERE id_Articulo = $idArticulo";
     $resultImagenes = mysqli_query($conexion, $queryImagenes);
 
     echo '<div class="mb-4 w-100">';

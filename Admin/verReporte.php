@@ -73,7 +73,7 @@
             <div class="mb-4">
               <h3>Información del Producto</h3>
               <p><strong>Quien regala:</strong> <?php echo htmlspecialchars($dataCliente['nombre']); ?></p>
-              <p><strong>Nombre del Producto:</strong> <?php echo htmlspecialchars($dataArticulo['nombre']); ?></p>
+              <p><strong>Nombre del Producto:</strong> <?php echo htmlspecialchars($dataArticulo['nombre_art']); ?></p>
               <p><strong>Descripción:</strong> <?php echo htmlspecialchars($dataArticulo['descripcion']); ?></p>
               <p><strong>Publicación:</strong> <?php echo htmlspecialchars($dataArticulo['publicacion']); ?></p>
               <p><strong>Imagenes:</strong></p>
@@ -84,7 +84,7 @@
               }
               ?>
               <h4>Información del Solicitante</h4>
-              <p><strong>Nombre del Solicitante:</strong> <?php echo htmlspecialchars($dataSolicitante['nombre']); ?></p>
+              <p><strong>Nombre del Solicitante:</strong> <?php echo htmlspecialchars($dataSolicitante['nombre_recibe']); ?></p>
               <p><strong>Usuario:</strong> <?php echo htmlspecialchars($dataSolicitante['username']); ?></p>
             </div>
           </div>

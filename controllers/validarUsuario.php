@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   $conexion = mysqli_connect("localhost", "root", "", "regalatodo");
 
-  $result = mysqli_query($conexion, "SELECT password,nombre,tipo,idCliente FROM Cliente WHERE username='$usu'");
+  $result = mysqli_query($conexion, "SELECT password,nombre,tipo,idCliente FROM cliente WHERE username='$usu'");
 
 
   if ($row = mysqli_fetch_array($result)) {

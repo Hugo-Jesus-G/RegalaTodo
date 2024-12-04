@@ -1,9 +1,9 @@
 <?php
 
 if ($_SESSION['tipo'] == 0) {
-  $query = "SELECT * FROM Articulo WHERE id_Cliente!=" . $_SESSION['id_cliente'] . " AND disponibilidad != 1";
+  $query = "SELECT * FROM articulo WHERE id_Cliente!=" . $_SESSION['id_cliente'] . " AND disponibilidad != 1";
 } else {
-  $query = "SELECT * FROM Articulo AND disponibilidad != 1";
+  $query = "SELECT * FROM articulo AND disponibilidad != 1";
 }
 
 $conexion = mysqli_connect("localhost", "root", "", "regalatodo");
@@ -15,7 +15,7 @@ if ($result) {
     while ($row = mysqli_fetch_array($result)) {
 
       $idArticulo = $row['idArticulo'];
-      $queryImagenes = "SELECT * FROM ImagenesArticulo WHERE id_Articulo = $idArticulo";
+      $queryImagenes = "SELECT * FROM imagenesarticulo WHERE id_Articulo = $idArticulo";
       $resultImagenes = mysqli_query($conexion, $queryImagenes);
 
       echo '<div class="mb-4 w-100">';

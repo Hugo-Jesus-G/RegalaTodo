@@ -11,7 +11,7 @@ if (!$conexion) {
 }
 
 // Consultar el artículo
-$query = "SELECT * FROM Articulo WHERE idArticulo = $idArticulo";
+$query = "SELECT * FROM articulo WHERE idArticulo = $idArticulo";
 $result = mysqli_query($conexion, $query);
 
 if ($row = mysqli_fetch_assoc($result)) {
@@ -22,7 +22,7 @@ if ($row = mysqli_fetch_assoc($result)) {
     die("Artículo no encontrado.");
 }
 
-$queryImagenes = "SELECT * FROM ImagenesArticulo WHERE id_Articulo = $idArticulo";
+$queryImagenes = "SELECT * FROM imagenesarticulo WHERE id_Articulo = $idArticulo";
 $resultImagenes = mysqli_query($conexion, $queryImagenes);
 
 $imagenes = array();

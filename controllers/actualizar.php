@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $descripcion = $_POST['descripcion'];
 
     // Actualizar el artículo en la base de datos
-    $queryUpdateArticulo = "UPDATE Articulo SET nombre = '$nombre', localidad = '$localidad', descripcion = '$descripcion',publicacion=NOW() WHERE idArticulo = $idArticulo";
+    $queryUpdateArticulo = "UPDATE articulo SET nombre = '$nombre', localidad = '$localidad', descripcion = '$descripcion',publicacion=NOW() WHERE idArticulo = $idArticulo";
     if (!mysqli_query($conexion, $queryUpdateArticulo)) {
         echo "<div class='alert alert-danger' role='alert'>Error al actualizar el artículo.</div>";
     }
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['eliminar_imagenes'])) {
         $imagenesAEliminar = $_POST['eliminar_imagenes'];
         foreach ($imagenesAEliminar as $idImagen) {
-            $queryEliminarImagen = "DELETE FROM ImagenesArticulo WHERE idImagenesArticulo = $idImagen";
+            $queryEliminarImagen = "DELETE FROM imagenesarticulo WHERE idImagenesArticulo = $idImagen";
             if (!mysqli_query($conexion, $queryEliminarImagen)) {
                 echo "<div class='alert alert-danger' role='alert'>Error al eliminar la imagen.</div>";
             }
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $image_path = $destino . $nombre_imagen; 
 
             if (copy($tmp_nombre, $image_path)) {
-                $queryimagen = "INSERT INTO ImagenesArticulo (id_Articulo, ruta) VALUES ('$idArticulo', '$image_path')";
+                $queryimagen = "INSERT INTO imagenesarticulo (id_Articulo, ruta) VALUES ('$idArticulo', '$image_path')";
                 if (!mysqli_query($conexion, $queryimagen)) {
                     echo "<div class='alert alert-danger' role='alert'>Error al registrar la imagen.</div>";
                 }
