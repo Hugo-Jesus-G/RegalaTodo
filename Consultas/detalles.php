@@ -35,14 +35,41 @@ if ($result) {
               </button>
             </div>';  // Fin del carrusel
     //BOTONES
-    echo '<div class="px-3 py-3">
-                <h5 class="mb-3">' . $row['nombre'] . '</h5>
-                <p class="mb-3">' . $row['descripcion'] . '</p>
-                <p><strong>Publicación:</strong> ' . $row['publicacion'] . '</p>
-                <p><strong>Localidad:</strong> ' . $row['localidad'] . '</p>
-                <a href="detalles.php?id=' . $row['idArticulo'] . '" class="btn btn-success">Solicitar</a>
-
-                </div>';
+    echo '
+      <div class="px-3 py-3">
+        <h5 class="mb-3">' . $row['nombre'] . '</h5>
+        <p class="mb-3">' . $row['descripcion'] . '</p>
+        <p><strong>Publicación:</strong> ' . $row['publicacion'] . '</p>
+        <p><strong>Localidad:</strong> ' . $row['localidad'] . '</p>
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#Solicitud">Solicitar</button>
+      </div>
+      <div class="modal fade" id="Solicitud" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true" data-bs-keyboard="false" >
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalLabel">Haz tu solicitud</h5>
+            </div>
+            <form action="../controllers/ProcesarSolicitud.php" method="post">
+              <div class="modal-body row justify-content-center">
+                <div class="col-auto col-lg-9">
+                  <div class="form-group input-group mb-3 mt-3">
+                    <span class="input-group-text">
+                      <i class="bi bi-basket2-fill"></i>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Ingrese direccion de entrega." name="entrega">
+                    <input type="text" hidden value="'.$idArticulo.'" name="id_articulo">
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-success">Solicitar</button>
+                <button class="btn btn-danger" data-bs-dismiss="modal" id="cerrar_modal" type="button">Cerrar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    ';
 
     // Cerramos el div del artículo
     echo '</div>';

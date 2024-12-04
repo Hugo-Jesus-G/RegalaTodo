@@ -1,5 +1,5 @@
 <?php
-$query = "SELECT * FROM Articulo";
+$query = "SELECT * FROM Articulo WHERE disponibilidad != 1";
 $conexion = mysqli_connect("localhost", "root", "", "regalatodo");
 
 $result = mysqli_query($conexion, $query);
